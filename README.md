@@ -1,25 +1,32 @@
-# Compare Doom's "fast inverse square root" (f32 and f64) to modern Zig
+# Compare Doom's "fast inverse square root" (f32) to Zig (f64, f128)
 
 Tests a bunch of semi-random values of `x` for `1 / sqrt( x )`
 
-`% zig run main.zig`
+## Test f32, f64, f128:
+
+`zig test inv_sqrt_fast.zig`
+
+
+
+## Run example:
+
+`zig run main.zig`
 
 ```
-inv_sqrt(0.130) 32 bit float
-  simple = 2.7702310
-  optima = 2.7702310
-  fast 0 = 2.8224037
-  fast 1 = 2.7687480
-  fast 2 = 2.7702301
-  fast 3 = 2.7702310
-
-inv_sqrt(0.129) 64 bit float
-  simple = 2.786951847950422
-  optima = 2.786951847950422
-  fast 0 = 2.834914798060578
-  fast 1 = 2.785706594287222
-  fast 2 = 2.786951013476513
-  fast 3 = 2.786951847950047
-  fast 4 = 2.786951847950421
-  fast 5 = 2.786951847950422
+Running 0 newton iterations for 10000 tests:
+ 3.131634 % error of f32 fast inv sqrt
+ 3.132675 % error of f64 fast inv sqrt
+ 2.419350 % error of f128 fast inv sqrt
+Running 1 newton iterations for 10000 tests:
+ 0.129338 % error of f32 fast inv sqrt
+ 0.129425 % error of f64 fast inv sqrt
+ 0.088623 % error of f128 fast inv sqrt
+Running 2 newton iterations for 10000 tests:
+ 0.000250 % error of f32 fast inv sqrt
+ 0.000249 % error of f64 fast inv sqrt
+ 0.000171 % error of f128 fast inv sqrt
+Running 3 newton iterations for 10000 tests:
+ 0.000005 % error of f32 fast inv sqrt
+ 0.000000001 % error of f64 fast inv sqrt
+ 0.000000011 % error of f128 fast inv sqrt
 ```
